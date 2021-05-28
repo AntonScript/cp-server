@@ -1,8 +1,8 @@
 package com.example.cpserver.congif;
 
 import com.example.cpserver.general.model.UserContext;
-import com.example.cpserver.service.JwtService;
-import com.example.cpserver.service.UserDetailsServiceImp;
+import com.example.cpserver.general.service.JwtService;
+import com.example.cpserver.general.service.UserDetailsServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;

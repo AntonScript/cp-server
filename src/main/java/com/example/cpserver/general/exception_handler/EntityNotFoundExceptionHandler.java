@@ -1,7 +1,7 @@
 package com.example.cpserver.general.exception_handler;
 
 
-import com.example.cpserver.controller.dto.Message;
+import com.example.cpserver.general.dto.Message;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

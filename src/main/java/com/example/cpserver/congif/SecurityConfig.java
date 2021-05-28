@@ -1,6 +1,6 @@
 package com.example.cpserver.congif;
 
-import com.example.cpserver.service.UserDetailsServiceImp;
+import com.example.cpserver.general.service.UserDetailsServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;

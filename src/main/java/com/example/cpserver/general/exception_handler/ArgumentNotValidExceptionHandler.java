@@ -1,6 +1,6 @@
 package com.example.cpserver.general.exception_handler;
 
-import com.example.cpserver.controller.dto.Message;
+import com.example.cpserver.general.dto.Message;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;

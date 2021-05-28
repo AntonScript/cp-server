@@ -1,6 +1,6 @@
 package com.example.cpserver.general.model;
 
-import com.example.cpserver.model.User;
+import com.example.cpserver.user.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

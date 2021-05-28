@@ -1,7 +1,7 @@
 package com.example.cpserver.congif;
 
 
-import com.example.cpserver.model.User;
+import com.example.cpserver.user.model.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
