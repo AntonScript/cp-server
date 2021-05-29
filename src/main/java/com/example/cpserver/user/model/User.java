@@ -2,10 +2,7 @@ package com.example.cpserver.user.model;
 
 import com.example.cpserver.user.controller.dto.RegUserDto;
 import com.example.cpserver.training_group.model.TrainingGroup;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIdentityReference;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -42,6 +39,7 @@ public class User {
     private Set<TrainingGroup> trainingGroups;
 
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Attempt> attempts;
 

@@ -27,11 +27,22 @@ public class UserController {
         this.userRepo = userRepo;
     }
 
+
     @GetMapping("/all")
     @ResponseStatus(HttpStatus.OK)
     public List<User> getUsers(
+            @RequestParam (required = false) UserRole role
     ){
-        return userRepo.findAllByRole(UserRole.USER);
+        if(role ==  null){
+            return userRepo.findAll();
+        }else if(role.equals(UserRole.USER)){
+            return userRepo.findAllByRole(UserRole.USER);
+
+        }else if(role.equals(UserRole.ADMIN)) {
+            return userRepo.findAllByRole(UserRole.ADMIN);
+        }else {
+            return null;
+        }
     }
 
     @GetMapping
