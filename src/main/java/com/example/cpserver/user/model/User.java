@@ -2,6 +2,10 @@ package com.example.cpserver.user.model;
 
 import com.example.cpserver.user.controller.dto.RegUserDto;
 import com.example.cpserver.training_group.model.TrainingGroup;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -30,6 +34,10 @@ public class User {
 
     private Long lastIdAttempt = 0L;
 
+
+    @JsonProperty("trainingGroupIds")
+    @JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
+    @JsonIdentityReference(alwaysAsId=true)
     @ManyToMany
     private Set<TrainingGroup> trainingGroups;
 

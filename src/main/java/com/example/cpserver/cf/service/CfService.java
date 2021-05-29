@@ -58,7 +58,7 @@ public class CfService {
                 if(!attempt.getResult()){
                     attempt.setNumberOfAttempts(attempt.getNumberOfAttempts() + 1);
                     attempt.setLanguage(res.getProgrammingLanguage());
-                    if(res.getVerdict().equals("")){
+                    if(res.getVerdict().equals("OK")){
                         attempt.setResult(true);
                     }
                     attemptRepo.save(attempt);
@@ -67,7 +67,7 @@ public class CfService {
             }else {
                 Attempt attempt = new Attempt();
                 attempt.setResult(false);
-                if(res.getVerdict().equals("")){
+                if(res.getVerdict().equals("OK")){
                     attempt.setResult(true);
                 }
                 attempt.setUser(user);

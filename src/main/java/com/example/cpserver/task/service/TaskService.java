@@ -62,13 +62,13 @@ public class TaskService {
         Task task = new Task();
         task.setName(createTaskDto.getName());
         task.setLink(link);
-        task.setSecond_key(res.get(0));
-        task.setFirst_key(Long.parseLong(res.get(1)));
+        task.setSecond_key(new StringBuilder(res.get(0)).reverse().toString());
+        task.setFirst_key(Long.parseLong(new StringBuilder(res.get(1)).reverse().toString()));
         task.setTheme(theme.get());
         task.setNumber(theme.get().getCount());
         try {
             theme.get().getTasks().add(task);
-            theme.get().setCount(theme.get().getCount());
+            theme.get().setCount(theme.get().getCount()+1);
             taskRepo.save(task);
             themeRepo.save(theme.get());
             return new Message("task created");

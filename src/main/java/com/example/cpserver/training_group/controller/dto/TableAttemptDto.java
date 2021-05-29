@@ -1,27 +1,11 @@
-package com.example.cpserver.user.model;
+package com.example.cpserver.training_group.controller.dto;
 
-import com.example.cpserver.user.model.User;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.example.cpserver.user.model.Attempt;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name = "attempt",
-        indexes = @Index(name = "index_search", columnList = " contestId, index",unique = false)
-)
-public class Attempt {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @JsonIgnore
-    @ManyToOne
-    private User user;
-
+public class TableAttemptDto {
     private Long contestId;
 
     private String index;
-
 
     private Integer numberOfAttempts;
 
@@ -29,19 +13,16 @@ public class Attempt {
 
     private String language;
 
-
-
-    public Attempt() {
+    public TableAttemptDto() {
     }
 
-    public Long getId() {
-        return id;
+    public TableAttemptDto(Attempt attempt) {
+        this.contestId = attempt.getContestId();
+        this.index = attempt.getIndex();
+        this.numberOfAttempts = attempt.getNumberOfAttempts();
+        this.result = attempt.getResult();
+        this.language = attempt.getLanguage();
     }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
 
     public Long getContestId() {
         return contestId;
@@ -58,7 +39,6 @@ public class Attempt {
     public void setIndex(String index) {
         this.index = index;
     }
-
 
     public Integer getNumberOfAttempts() {
         return numberOfAttempts;
@@ -83,14 +63,4 @@ public class Attempt {
     public void setLanguage(String language) {
         this.language = language;
     }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-
 }
