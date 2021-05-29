@@ -1,8 +1,10 @@
 package com.example.cpserver.user.controller.dto;
 
+import com.example.cpserver.training_group.model.dto.GroupDto;
 import com.example.cpserver.user.model.User;
 import com.example.cpserver.user.model.UserRole;
 
+import java.util.List;
 import java.util.Map;
 
 public class GetUserDto {
@@ -23,7 +25,7 @@ public class GetUserDto {
 
     private UserRole role;
 
-    private Map<Long,String> group;
+    private List<GroupDto> group;
 
     public GetUserDto() {
     }
@@ -103,11 +105,11 @@ public class GetUserDto {
         this.role = role;
     }
 
-    public Map<Long, String> getGroup() {
+    public List<GroupDto> getGroup() {
         return group;
     }
 
-    public void setGroup(Map<Long, String> group) {
+    public void setGroup(List<GroupDto> group) {
         this.group = group;
     }
 }

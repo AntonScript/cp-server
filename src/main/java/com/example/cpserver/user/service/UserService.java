@@ -1,6 +1,7 @@
 package com.example.cpserver.user.service;
 
 import com.example.cpserver.training_group.model.TrainingGroup;
+import com.example.cpserver.training_group.model.dto.GroupDto;
 import com.example.cpserver.user.controller.dto.GetUserDto;
 import com.example.cpserver.user.repo.UserRepo;
 import com.example.cpserver.congif.JwtUtil;
@@ -14,9 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.transaction.Transactional;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class UserService {
@@ -51,11 +50,11 @@ public class UserService {
         }
         Optional<User> user = userRepo.findByIdEquals(id);
         GetUserDto getUserDto = new GetUserDto(user.get());
-        Map<Long,String> group = new HashMap<>();
+        List<GroupDto> list = new ArrayList<>();
         for (TrainingGroup trainingGroup : user.get().getTrainingGroups()){
-            group.put(trainingGroup.getId(),trainingGroup.getName());
+            list.add(new GroupDto(trainingGroup.getId(),trainingGroup.getName()));
         }
-        getUserDto.setGroup(group);
+        getUserDto.setGroup(list);
         return getUserDto;
     }
 
