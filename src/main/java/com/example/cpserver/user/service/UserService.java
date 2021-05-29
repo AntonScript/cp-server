@@ -1,5 +1,7 @@
 package com.example.cpserver.user.service;
 
+import com.example.cpserver.training_group.model.TrainingGroup;
+import com.example.cpserver.user.controller.dto.GetUserDto;
 import com.example.cpserver.user.repo.UserRepo;
 import com.example.cpserver.congif.JwtUtil;
 import com.example.cpserver.general.dto.Message;
@@ -12,6 +14,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.transaction.Transactional;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -41,12 +45,18 @@ public class UserService {
     }
 
 
-    public User getUser(Integer id){
+    public GetUserDto getUser(Integer id){
         if(!userRepo.existsById(id)){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Пользователь с таким id уже существует");
         }
         Optional<User> user = userRepo.findByIdEquals(id);
-        return user.get();
+        GetUserDto getUserDto = new GetUserDto(user.get());
+        Map<Long,String> group = new HashMap<>();
+        for (TrainingGroup trainingGroup : user.get().getTrainingGroups()){
+            group.put(trainingGroup.getId(),trainingGroup.getName());
+        }
+        getUserDto.setGroup(group);
+        return getUserDto;
     }
 
     @Transactional
