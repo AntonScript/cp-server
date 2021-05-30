@@ -46,11 +46,16 @@ public class CfService {
                 CfProblem.class
         );
 
+        List<CfResultPackage> cfResultPackages1 = cfUserStatus.getResult();
+        System.out.println(1);
         List<CfResultPackage> cfResultPackages = cfUserStatus.getResult().
                 stream().
-                filter(cfResultPackage -> cfResultPackage.getId() > user.getLastIdAttempt()).
+                filter(cfResultPackage -> cfResultPackage.getId() < user.getLastIdAttempt()).
                 collect(Collectors.toList());
 
+
+
+        System.out.println(1);
 
         for(CfResultPackage res : cfResultPackages){
             if(attemptRepo.existsByUserAndContestIdAndIndex(user,res.getProblem().getContestId(),res.getProblem().getIndex())){

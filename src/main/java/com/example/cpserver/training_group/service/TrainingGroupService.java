@@ -65,8 +65,11 @@ public class TrainingGroupService {
         tableGroupDto.setId(resGroup.getId());
         List<TableThemeDto> list = new ArrayList<>();
         for(Theme theme : themes){
+            //Set<Task> tasks = new ArrayList<>(theme.getTasks());
+            //tasks.sort((o1, o2) -> (int) (o1.getNumber() - o2.getNumber()));
             list.add(tableThemeDto(theme, users));
         }
+
         tableGroupDto.setListTheme(list);
 
 
@@ -78,6 +81,7 @@ public class TrainingGroupService {
     public TableThemeDto tableThemeDto(Theme theme, List<User> users){
         String name = theme.getName();
         List<TableTaskDto> tableTaskDtos = tableTaskDto((new ArrayList<>(theme.getTasks())));
+        tableTaskDtos.sort((o1, o2) -> (int) (o1.getNumber() -o2.getNumber()));
         TableThemeDto tableThemeDto = new TableThemeDto(theme.getId(),name, tableTaskDtos);
         tableThemeDto.setListUser(tableUserDto(users,new ArrayList<>(theme.getTasks())));
 
