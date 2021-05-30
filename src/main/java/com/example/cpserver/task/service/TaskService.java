@@ -49,6 +49,7 @@ public class TaskService {
                 token+=link.charAt(i);
             }else {
                if(cout < 3){
+                   token = new StringBuilder(token).reverse().toString();
                    if(!token.equals(error)){
                        res.add(token);
                    }
@@ -62,8 +63,8 @@ public class TaskService {
         Task task = new Task();
         task.setName(createTaskDto.getName());
         task.setLink(link);
-        task.setSecond_key(new StringBuilder(res.get(0)).reverse().toString());
-        task.setFirst_key(Long.parseLong(new StringBuilder(res.get(1)).reverse().toString()));
+        task.setSecond_key(res.get(0));
+        task.setFirst_key(Long.parseLong(res.get(1)));
         task.setTheme(theme.get());
         task.setNumber(theme.get().getCount());
         try {
