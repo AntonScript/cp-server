@@ -3,6 +3,7 @@ package com.example.cpserver.training_group.controller.dto;
 import java.util.List;
 
 public class TableThemeDto {
+    private Long id;
     private String name;
     private List<TableTaskDto> listTask;
     private List<TableUserDto> listUser;
@@ -10,9 +11,20 @@ public class TableThemeDto {
     public TableThemeDto() {
     }
 
-    public TableThemeDto(String name, List<TableTaskDto> listTask) {
+    public TableThemeDto(Long id,String name, List<TableTaskDto> listTask) {
+        this.id = id;
         this.name = name;
         this.listTask = listTask;
+    }
+
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

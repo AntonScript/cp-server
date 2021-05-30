@@ -78,7 +78,7 @@ public class TrainingGroupService {
     public TableThemeDto tableThemeDto(Theme theme, List<User> users){
         String name = theme.getName();
         List<TableTaskDto> tableTaskDtos = tableTaskDto((new ArrayList<>(theme.getTasks())));
-        TableThemeDto tableThemeDto = new TableThemeDto(name, tableTaskDtos);
+        TableThemeDto tableThemeDto = new TableThemeDto(theme.getId(),name, tableTaskDtos);
         tableThemeDto.setListUser(tableUserDto(users,new ArrayList<>(theme.getTasks())));
 
         return tableThemeDto;

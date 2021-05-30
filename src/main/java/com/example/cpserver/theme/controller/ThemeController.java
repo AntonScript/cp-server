@@ -25,7 +25,7 @@ public class ThemeController {
 
     @GetMapping
     public Theme getTheme(@RequestParam Long id){
-        return themeRepo.findById(id).get();
+        return themeRepo.findById(id).get();    
     }
 
 
